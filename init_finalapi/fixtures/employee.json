@@ -1,0 +1,32 @@
+[
+    {
+        "model": "init_finalapi.employee",
+        "pk": 1,
+        "fields": {
+            "user": 1, 
+            "hire_date": "2022-02-07", 
+            "birth_date": "1990-05-28", 
+            "address": "543 Road Way", 
+            "city": "Nashville", 
+            "state": "TN", 
+            "postal_code": "54321", 
+            "country": "US", 
+            "phone_number": "123-123-1234"
+        }
+    },
+    {
+        "model": "init_finalapi.employee",
+        "pk": 2,
+        "fields": {
+            "user": 2, 
+            "hire_date": "2022-01-01", 
+            "birth_date": "1980-07-14", 
+            "address": "414 Great Lane", 
+            "city": "Nashville", 
+            "state": "TN", 
+            "postal_code": "54321", 
+            "country": "US", 
+            "phone_number": "222-888-7657"
+        }
+    }
+]

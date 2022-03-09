@@ -1,0 +1,57 @@
+[
+    {
+        "model": "init_finalapi.inventory",
+        "pk": 1,
+        "fields":{
+            "description":"vanilla scent", 
+            "unit_price":"3.00",
+            "qty_available":"10", 
+            "bin_location":4, 
+            "created_by":2 
+        }
+    },
+    {
+        "model": "init_finalapi.inventory",
+        "pk": 2,
+        "fields":{
+            "description":"Oreo scent", 
+            "unit_price":"5.50",
+            "qty_available":"5", 
+            "bin_location":2, 
+            "created_by":1 
+        }
+    },
+    {
+        "model": "init_finalapi.inventory",
+        "pk": 3,
+        "fields":{
+            "description":"Lavender scent", 
+            "unit_price":"2.50",
+            "qty_available":"12", 
+            "bin_location":3, 
+            "created_by":1 
+        }
+    },
+    {
+        "model": "init_finalapi.inventory",
+        "pk": 4,
+        "fields":{
+            "description":"Bubbly scent", 
+            "unit_price":"5.50",
+            "qty_available":"7", 
+            "bin_location":2, 
+            "created_by":2
+        }
+    },
+    {
+        "model": "init_finalapi.inventory",
+        "pk": 4,
+        "fields":{
+            "description":"Candle Wicks", 
+            "unit_price":"1.75",
+            "qty_available":"300", 
+            "bin_location":3, 
+            "created_by":2 
+        }
+    }
+]

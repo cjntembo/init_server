@@ -1,0 +1,56 @@
+[
+    {
+        "model": "init_finalapi.pickList",
+        "pk": 1,
+        "fields": {
+            "customer": 1,
+            "picked_by": 1,
+            "pick_list_date": "2022-04-01T14:51:39.989Z"
+        }
+    },
+    {
+        "model": "init_finalapi.pickList",
+        "pk": 2,
+        "fields": {
+            "customer": 3,
+            "picked_by": 1,
+            "pick_list_date": "2022-04-15T14:51:39.989Z"
+        }
+    },
+    {
+        "model": "init_finalapi.pickList",
+        "pk": 3,
+        "fields": {
+            "customer": 2,
+            "picked_by": 2,
+            "pick_list_date": "2022-04-01T14:51:39.989Z"
+        }
+    },
+    {
+        "model": "init_finalapi.pickList",
+        "pk": 4,
+        "fields": {
+            "customer": 4,
+            "picked_by": 2,
+            "pick_list_date": "2022-04-13T14:51:39.989Z"
+        }
+    },
+    {
+        "model": "init_finalapi.pickList",
+        "pk": 5,
+        "fields": {
+            "customer": 3,
+            "picked_by": 1,
+            "pick_list_date": "2022-04-04T14:51:39.989Z"
+        }
+    },
+    {
+        "model": "init_finalapi.pickList",
+        "pk": 6,
+        "fields": {
+            "customer": 1,
+            "picked_by": 2,
+            "pick_list_date": "2022-04-05T14:51:39.989Z"
+        }
+    }
+]

@@ -1,0 +1,11 @@
+[
+    {
+        "model": "init_finalapi.pickListLine",
+        "pk": "1",
+        "fields": {
+            "pick_list": 1,
+            "inventory": 2,
+            "qty_requested": 2
+        }
+    }
+]

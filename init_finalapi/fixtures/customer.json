@@ -1,0 +1,70 @@
+[
+    {
+        "model": "init_finalapi.customer",
+        "pk": 1,
+        "fields": {
+            "first_name": "Jane", 
+            "last_name": "Doe",
+            "company": "CandleLights", 
+            "address": "123 MakeAway", 
+            "city": "Nashville", 
+            "state": "TN", 
+            "postal_code": "12345",
+            "country": "US", 
+            "phone_number": "555-666-7899",
+            "email": "Jane.Doe@candle.com", 
+            "employee": 1
+        }
+    },
+    {
+        "model": "init_finalapi.customer",
+        "pk": 2,
+        "fields": {
+            "first_name": "Eric", 
+            "last_name": "Dung",
+            "company": "Soaps R US", 
+            "address": "444 Broadway", 
+            "city": "Nashville", 
+            "state": "TN", 
+            "postal_code": "12345",
+            "country": "US", 
+            "phone_number": "345-543-2345",
+            "email": "Eric.Dung@Soaps.com", 
+            "employee": 2 
+        }
+    },
+    {
+        "model": "init_finalapi.customer",
+        "pk": 3,
+        "fields": {
+            "first_name": "Michael", 
+            "last_name": "Johnson",
+            "company": "ScentsAway", 
+            "address": "23 Charlotte", 
+            "city": "Nashville", 
+            "state": "TN", 
+            "postal_code": "12345",
+            "country": "US", 
+            "phone_number": "222-222-3333",
+            "email": "Michael.Johnson@gmail.com", 
+            "employee": 1
+        }
+    },
+    {
+        "model": "init_finalapi.customer",
+        "pk": 4,
+        "fields": {
+            "first_name": "Sarah", 
+            "last_name": "Bell",
+            "company": "WaxIt", 
+            "address": "98 PIke Lane", 
+            "city": "Nashville", 
+            "state": "TN", 
+            "postal_code": "12345",
+            "country": "US", 
+            "phone_number": "444-333-5555",
+            "email": "Sarah.Bell@gmail.com", 
+            "employee": 1 
+        }
+    }
+]
