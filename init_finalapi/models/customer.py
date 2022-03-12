@@ -1,7 +1,9 @@
 from django.db import models
 
 class Customer(models.Model):
-    
+    """
+    customer model
+    """
     first_name = models.CharField(max_length=55)
     last_name = models.CharField(max_length=55)
     company = models.CharField(max_length=100, null=True)
