@@ -13,16 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-# from django.contrib import admin
+from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from rest_framework import routers
 from init_finalapi.views import (
     register_user,
     login_user,
+    EmployeeView,
+    CustomerView
 )
 
 router = routers.DefaultRouter(trailing_slash=False)
+router.register(r'employees', EmployeeView, 'employee')
+router.register(r'customers', CustomerView, 'customer')
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
@@ -32,4 +36,5 @@ urlpatterns = [
     # Requests to http://localhost:8000/login will be routed to the login_user function
     path('login', login_user),
     path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
+    path('admin/', admin.site.urls),
 ]

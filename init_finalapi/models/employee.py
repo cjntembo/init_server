@@ -10,7 +10,6 @@ class Employee(models.Model):
     employees model
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    email = models.EmailField(max_length=55, default="enter email here")
     hire_date = models.DateField(auto_now_add=True)
     birth_date = models.DateField(null=True)
     address = models.CharField(max_length=100, null=True)
