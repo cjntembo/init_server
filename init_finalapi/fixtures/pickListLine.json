@@ -7,5 +7,15 @@
             "inventory": 2,
             "qty_requested": 2
         }
+    },
+    {
+        "model": "init_finalapi.pickListLine",
+        "pk": "2",
+        "fields": {
+            "pick_list": 2,
+            "inventory": 3,
+            "qty_requested": 1
+        }
     }
+    
 ]
