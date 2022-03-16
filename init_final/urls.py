@@ -21,12 +21,20 @@ from init_finalapi.views import (
     register_user,
     login_user,
     EmployeeView,
-    CustomerView
+    CustomerView,
+    InventoryView,
+    BinLocationView,
+    PickListView,
+    PickListLineView
 )
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'employees', EmployeeView, 'employee')
 router.register(r'customers', CustomerView, 'customer')
+router.register(r'inventories', InventoryView, 'inventory')
+router.register(r'bin_locations', BinLocationView, 'bin_location')
+router.register(r'pick_lists', PickListView, 'pick_list')
+router.register(r'pick_list_lines', PickListLineView, 'pick_list_line')
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
