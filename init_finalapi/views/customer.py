@@ -4,13 +4,15 @@ from django.http import HttpResponseServerError
 from rest_framework import status
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import IsAdminUser, AllowAny
+from rest_framework.decorators import permission_classes
 from rest_framework.decorators import action
 from init_finalapi.models import Customer
 from init_finalapi.serializers.customer_serializer import CustomerSerializer
 
 class CustomerView(ViewSet):
     """Init Customers"""
+    @permission_classes([AllowAny])
     def retrieve(self, request, pk=None):
         """Handle Get Requests for single Customer
         Returns --JSON serialized customer
@@ -22,6 +24,7 @@ class CustomerView(ViewSet):
         except Exception as ex:
             return HttpResponseServerError(ex)
 
+    @permission_classes([AllowAny])
     def list(self, request):
         """Gets all Customers"""
         customer = Customer.objects.all()
@@ -29,6 +32,7 @@ class CustomerView(ViewSet):
         return Response(serializer.data)
 
     # @permission_classes([IsAdminUser])
+    @permission_classes([AllowAny])
     def create(self, request):
         """Handle Post Operations
         Returns:
@@ -57,6 +61,7 @@ class CustomerView(ViewSet):
 
             return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
 
+    @permission_classes([AllowAny])
     def update(self, request, pk=None):
         """Handle PUT requests for a category
 
@@ -82,6 +87,7 @@ class CustomerView(ViewSet):
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
 
+    @permission_classes([AllowAny])
     def destroy(self, request, pk=None):
         """Handle DELETE requests for a single category
 

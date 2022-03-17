@@ -1,7 +1,7 @@
 [
     {
         "model": "init_finalapi.pickListLine",
-        "pk": "1",
+        "pk": 1,
         "fields": {
             "pick_list": 1,
             "inventory": 2,
@@ -10,7 +10,7 @@
     },
     {
         "model": "init_finalapi.pickListLine",
-        "pk": "2",
+        "pk": 2,
         "fields": {
             "pick_list": 2,
             "inventory": 3,

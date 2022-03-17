@@ -4,13 +4,15 @@ from django.http import HttpResponseServerError
 from rest_framework import status
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import IsAdminUser, AllowAny
+from rest_framework.decorators import permission_classes
 from rest_framework.decorators import action
-from init_finalapi.models import BinLocation
+from init_finalapi.models import BinLocation, Employee
 from init_finalapi.serializers.bin_location_serializer import BinLocationSerializer
 
 class BinLocationView(ViewSet):
     """Init BinLocation"""
+    @permission_classes([AllowAny])
     def retrieve(self, request, pk=None):
         """Handle Get Requests for single BinLocation
         Returns --JSON serialized bin_location
@@ -22,6 +24,7 @@ class BinLocationView(ViewSet):
         except Exception as ex:
             return HttpResponseServerError(ex)
 
+    @permission_classes([AllowAny])
     def list(self, request):
         """Gets all BinLocations"""
         bin_location = BinLocation.objects.all()
@@ -29,6 +32,7 @@ class BinLocationView(ViewSet):
         return Response(serializer.data)
 
     # @permission_classes([IsAdminUser])
+    @permission_classes([AllowAny])
     def create(self, request):
         """Handle Post Operations
         Returns:
@@ -39,7 +43,8 @@ class BinLocationView(ViewSet):
 
         bin_location = BinLocation()
         bin_location.bin_location_name = request.data["bin_location_name"]
-        bin_location.binned_by = request.data['binned_by']
+        binned_by = Employee.objects.get(pk=['employeeId'])
+        bin_location.binned_by = binned_by
 
         try:
             bin_location.save()
@@ -49,6 +54,7 @@ class BinLocationView(ViewSet):
 
             return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
 
+    @permission_classes([AllowAny])
     def update(self, request, pk=None):
         """Handle PUT requests for a bin_location
 
@@ -61,11 +67,13 @@ class BinLocationView(ViewSet):
 
         bin_location = BinLocation.objects.get(pk=pk)
         bin_location.bin_location_name = request.data["bin_location_name"]
-        bin_location.binned_by = request.data['binned_by']
+        binned_by = Employee.objects.get(pk=['employeeId'])
+        bin_location.binned_by = binned_by
         bin_location.save()
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
 
+    @permission_classes([AllowAny])
     def destroy(self, request, pk=None):
         """Handle DELETE requests for a single bin_location
 
