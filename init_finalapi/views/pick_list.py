@@ -4,13 +4,15 @@ from django.http import HttpResponseServerError
 from rest_framework import status
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import IsAdminUser, AllowAny
+from rest_framework.decorators import permission_classes
 from rest_framework.decorators import action
-from init_finalapi.models import PickList
+from init_finalapi.models import PickList, Employee, Customer
 from init_finalapi.serializers.pick_list_serializer import PickListSerializer
 
 class PickListView(ViewSet):
     """Init PickList"""
+    @permission_classes([AllowAny])
     def retrieve(self, request, pk=None):
         """Handle Get Requests for single PickList
         Returns --JSON serialized pick_list
@@ -22,13 +24,17 @@ class PickListView(ViewSet):
         except Exception as ex:
             return HttpResponseServerError(ex)
 
+    @permission_classes([AllowAny])
     def list(self, request):
         """Gets all BinLocations"""
+
         pick_list = PickList.objects.all()
+
         serializer = PickListSerializer(pick_list, many=True, context={'request': request})
         return Response(serializer.data)
 
     # @permission_classes([IsAdminUser])
+    @permission_classes([AllowAny])
     def create(self, request):
         """Handle Post Operations
         Returns:
@@ -38,8 +44,10 @@ class PickListView(ViewSet):
         #     return Response({}, status=status.HTTP_403_FORBIDDEN)
 
         pick_list = PickList()
-        pick_list.customer = request.data["customer"]
-        pick_list.picked_by = request.data['picked_by']
+        customer = Customer.objects.get(pk=request.data['customerId'])
+        pick_list.customer = customer
+        picked_by = Employee.objects.get(pk=request.data['employeeId'])
+        pick_list.picked_by = picked_by
         pick_list.pick_list_date = request.data['pick_list_date']
 
         try:
@@ -50,6 +58,7 @@ class PickListView(ViewSet):
 
             return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
 
+    @permission_classes([AllowAny])
     def update(self, request, pk=None):
         """Handle PUT requests for a pick_list
 
@@ -60,14 +69,17 @@ class PickListView(ViewSet):
         # if not request.auth.user.is_staff:
         #    return Response({}, status=status.HTTP_403_FORBIDDEN)
 
-        pick_list = PickList.objects.get(pk=pk)
-        pick_list.customer = request.data["customer"]
-        pick_list.picked_by = request.data['picked_by']
+        pick_list = PickList(pk=pk)
+        customer = Customer.objects.get(pk=request.data['customerId'])
+        pick_list.customer = customer
+        picked_by = Employee.objects.get(pk=request.data['employeeId'])
+        pick_list.picked_by = picked_by
         pick_list.pick_list_date = request.data['pick_list_date']
         pick_list.save()
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
 
+    @permission_classes([AllowAny])
     def destroy(self, request, pk=None):
         """Handle DELETE requests for a single pick_list
 
