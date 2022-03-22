@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAdminUser, AllowAny
 from rest_framework.decorators import permission_classes
 from rest_framework.decorators import action
-from init_finalapi.models import Inventory, Employee
+from init_finalapi.models import Inventory, Employee, BinLocation
 from init_finalapi.serializers.inventory_serializer import InventorySerializer
 
 class InventoryView(ViewSet):
@@ -45,8 +45,9 @@ class InventoryView(ViewSet):
         inventory.description = request.data["description"]
         inventory.unit_price = request.data['unit_price']
         inventory.qty_available = request.data['qty_available']
-        inventory.bin_location = request.data['bin_location']
-        created_by = Employee.objects.get(pk=['employeeId'])
+        bin_location = BinLocation.objects.get(pk=request.data['bin_locationId'])
+        inventory.bin_location = bin_location
+        created_by = Employee.objects.get(pk=request.data['employeeId'])
         inventory.created_by = created_by
 
         try:
@@ -72,8 +73,11 @@ class InventoryView(ViewSet):
         inventory.description = request.data["description"]
         inventory.unit_price = request.data['unit_price']
         inventory.qty_available = request.data['qty_available']
-        inventory.bin_location = request.data['bin_location']
-        created_by = Employee.objects.get(pk=['employeeId'])
+        
+        bin_location = BinLocation.objects.get(pk=request.data['bin_locationId'])
+        inventory.bin_location = bin_location
+        
+        created_by = Employee.objects.get(pk=request.data['employeeId'])
         inventory.created_by = created_by
         inventory.save()
 

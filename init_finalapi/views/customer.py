@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAdminUser, AllowAny
 from rest_framework.decorators import permission_classes
 from rest_framework.decorators import action
-from init_finalapi.models import Customer
+from init_finalapi.models import Customer, Employee
 from init_finalapi.serializers.customer_serializer import CustomerSerializer
 
 class CustomerView(ViewSet):
@@ -38,8 +38,7 @@ class CustomerView(ViewSet):
         Returns:
         Response -- JSON serialized an customer instance
         """
-        if not request.auth.user.is_staff:
-            return Response({}, status=status.HTTP_403_FORBIDDEN)
+        
 
         customer = Customer()
         customer.email = request.data["email"]
@@ -52,6 +51,8 @@ class CustomerView(ViewSet):
         customer.postal_code = request.data['postal_code']
         customer.country = request.data['country']
         customer.phone_number = request.data['phone_number']
+        # employee = Employee.objects.get(pk=['employeeId'])
+        # customer.employee = employee
 
         try:
             customer.save()
@@ -69,8 +70,7 @@ class CustomerView(ViewSet):
             Response -- Empty body with 204 status code
         """
 
-        if not request.auth.user.is_staff:
-           return Response({}, status=status.HTTP_403_FORBIDDEN)
+
 
         customer = Customer.objects.get(pk=pk)
         customer.email = request.data["email"]
@@ -94,8 +94,7 @@ class CustomerView(ViewSet):
         Returns:
             Response -- 200, 404, or 500 status code
         """
-        if not request.auth.user.is_staff:
-            return Response({}, status=status.HTTP_403_FORBIDDEN)
+        
 
         try:
             customer = Customer.objects.get(pk=pk)
