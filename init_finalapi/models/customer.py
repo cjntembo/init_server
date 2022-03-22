@@ -14,4 +14,4 @@ class Customer(models.Model):
     country = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=50)
     email = models.EmailField(max_length=55)
-    employee = models.ForeignKey("init_finalapi.employee", on_delete=models.CASCADE, related_name="customers")
+    employee = models.ForeignKey("init_finalapi.employee", on_delete=models.CASCADE, related_name="customers", null=True)

@@ -10,6 +10,7 @@ class Employee(models.Model):
     employees model
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    # is_manager = models.BooleanField(default=False)
     hire_date = models.DateField(auto_now_add=True)
     birth_date = models.DateField(null=True)
     address = models.CharField(max_length=100, null=True)
@@ -18,3 +19,4 @@ class Employee(models.Model):
     postal_code = models.IntegerField(null=True)
     country = models.CharField(max_length=100, null=True)
     phone_number = models.CharField(max_length=14, null=True)
+    

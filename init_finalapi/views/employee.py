@@ -22,14 +22,15 @@ class EmployeeView(ViewSet):
             return Response(serializer.data)
         except Exception as ex:
             return HttpResponseServerError(ex)
-
+        
+    @permission_classes([AllowAny])
     def list(self, request):
         """Gets all Employees"""
         employee = Employee.objects.all()
         serializer = EmployeeSerializer(employee, many=True, context={'request': request})
         return Response(serializer.data)
 
-    # @permission_classes([AllowAny])
+    
     def create(self, request):
         """Handle Post Operations
         Returns:
@@ -37,8 +38,14 @@ class EmployeeView(ViewSet):
         """
         if not request.auth.user.is_staff:
             return Response({}, status=status.HTTP_403_FORBIDDEN)
+        
+        # user = Employee.create( is_manager = request.data['is_manager'])
+        
+        # if user.is_manager:
 
         employee = Employee()
+        # employee.user = request.auth.user
+        # employee.is_manager = request.data['is_manager']
         employee.birth_date = request.data["birth_date"]
         employee.address = request.data['address']
         employee.city = request.data['city']
@@ -66,6 +73,7 @@ class EmployeeView(ViewSet):
            return Response({}, status=status.HTTP_403_FORBIDDEN)
 
         employee = Employee.objects.get(pk=pk)
+        # employee.is_manager = request.data['is_manager']
         employee.birth_date = request.data["birth_date"]
         employee.address = request.data['address']
         employee.city = request.data['city']

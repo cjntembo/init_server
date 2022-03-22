@@ -1,6 +1,6 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from .models import PickListLine, Inventory
+from .models import PickListLine
 
 # @receiver(post_save, sender=PickListLine)
 # def change_inv_count(sender, instance, created, **kwargs):
@@ -21,5 +21,5 @@ def update_inv_count(sender, instance, created, **kwargs):
         Method for updating
     """
     if created:
-        instance.inventory.qty_available -= instance.pickListLine.qty_requested
+        instance.inventory.qty_available -= instance.qty_requested
         instance.inventory.save()

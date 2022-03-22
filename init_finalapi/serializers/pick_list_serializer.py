@@ -11,6 +11,7 @@ class PickListSerializer(serializers.ModelSerializer):
             'id',
             'customer',
             'picked_by',
-            'pick_list_date'
+            'pick_list_date',
+            'pick_list_lines'
             )
-        depth = 1
+        depth = 2

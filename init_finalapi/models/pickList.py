@@ -9,3 +9,4 @@ class PickList(models.Model):
                                   on_delete=models.CASCADE,
                                   related_name="pick_lists")
     pick_list_date = models.DateField(null=True)
+  

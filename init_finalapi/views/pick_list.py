@@ -8,6 +8,7 @@ from rest_framework.permissions import IsAdminUser, AllowAny
 from rest_framework.decorators import permission_classes
 from rest_framework.decorators import action
 from init_finalapi.models import PickList, Employee, Customer
+from init_finalapi.models.pickListLine import PickListLine
 from init_finalapi.serializers.pick_list_serializer import PickListSerializer
 
 class PickListView(ViewSet):
@@ -46,9 +47,14 @@ class PickListView(ViewSet):
         pick_list = PickList()
         customer = Customer.objects.get(pk=request.data['customerId'])
         pick_list.customer = customer
+        
         picked_by = Employee.objects.get(pk=request.data['employeeId'])
         pick_list.picked_by = picked_by
+        
         pick_list.pick_list_date = request.data['pick_list_date']
+        
+        pick_list_line = PickListLine.objects.get(pk=request.data['pick_list_lineId'])
+        pick_list.pick_list_line = pick_list_line
 
         try:
             pick_list.save()
@@ -72,9 +78,15 @@ class PickListView(ViewSet):
         pick_list = PickList(pk=pk)
         customer = Customer.objects.get(pk=request.data['customerId'])
         pick_list.customer = customer
+
         picked_by = Employee.objects.get(pk=request.data['employeeId'])
         pick_list.picked_by = picked_by
+
         pick_list.pick_list_date = request.data['pick_list_date']
+
+        pick_list_line = PickListLine.objects.get(pk=request.data['pick_list_lineId'])
+        pick_list.pick_list_line = pick_list_line
+
         pick_list.save()
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
