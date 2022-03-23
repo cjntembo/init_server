@@ -43,7 +43,7 @@ class BinLocationView(ViewSet):
 
         bin_location = BinLocation()
         bin_location.bin_location_name = request.data["bin_location_name"]
-        binned_by = Employee.objects.get(pk=['employeeId'])
+        binned_by = Employee.objects.get(pk=request.data['employeeId'])
         bin_location.binned_by = binned_by
 
         try:
@@ -67,7 +67,7 @@ class BinLocationView(ViewSet):
 
         bin_location = BinLocation.objects.get(pk=pk)
         bin_location.bin_location_name = request.data["bin_location_name"]
-        binned_by = Employee.objects.get(pk=['employeeId'])
+        binned_by = Employee.objects.get(pk=request.data['employeeId'])
         bin_location.binned_by = binned_by
         bin_location.save()
 
