@@ -18,7 +18,7 @@ class CustomerSerializer(serializers.ModelSerializer):
             'state',
             'postal_code',
             'country',
-            'phone_number',
+            # 'phone_number',
             # 'employee'
             )
         depth = 1

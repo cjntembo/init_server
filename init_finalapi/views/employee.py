@@ -8,6 +8,7 @@ from rest_framework.permissions import IsAdminUser, AllowAny
 from rest_framework.decorators import permission_classes
 from rest_framework.decorators import action
 from init_finalapi.models import Employee
+from django.contrib.auth import get_user_model
 from init_finalapi.serializers.employee_serializer import EmployeeSerializer
 
 class EmployeeView(ViewSet):
@@ -36,15 +37,21 @@ class EmployeeView(ViewSet):
         Returns:
         Response -- JSON serialized an employee instance
         """
-        if not request.auth.user.is_staff:
-            return Response({}, status=status.HTTP_403_FORBIDDEN)
+        # if not request.auth.user.is_staff:
+        #     return Response({}, status=status.HTTP_403_FORBIDDEN)
         
         # user = Employee.create( is_manager = request.data['is_manager'])
         
         # if user.is_manager:
-
+        User = get_user_model()
         employee = Employee()
-        # employee.user = request.auth.user
+        
+        user = User()
+        user.first_name = request.data["first_name"]
+        user.last_name = request.data["last_name"]
+        user.email = request.data["email"]
+        user.save()
+        employee.user = user
         # employee.is_manager = request.data['is_manager']
         employee.birth_date = request.data["birth_date"]
         employee.address = request.data['address']
@@ -52,7 +59,7 @@ class EmployeeView(ViewSet):
         employee.state = request.data['state']
         employee.postal_code = request.data['postal_code']
         employee.country = request.data['country']
-        employee.phone_number = request.data['phone_number']
+        # employee.phone_number = request.data['phone_number']
 
         try:
             employee.save()
@@ -61,6 +68,7 @@ class EmployeeView(ViewSet):
         except ValidationError as ex:
 
             return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
+        
 
     def update(self, request, pk=None):
         """Handle PUT requests for a employee
@@ -69,9 +77,9 @@ class EmployeeView(ViewSet):
             Response -- Empty body with 204 status code
         """
 
-        if not request.auth.user.is_staff:
-           return Response({}, status=status.HTTP_403_FORBIDDEN)
-
+        # if not request.auth.user.is_staff:
+        #    return Response({}, status=status.HTTP_403_FORBIDDEN)
+        
         employee = Employee.objects.get(pk=pk)
         # employee.is_manager = request.data['is_manager']
         employee.birth_date = request.data["birth_date"]
@@ -80,10 +88,11 @@ class EmployeeView(ViewSet):
         employee.state = request.data['state']
         employee.postal_code = request.data['postal_code']
         employee.country = request.data['country']
-        employee.phone_number = request.data['phone_number']
+        # employee.phone_number = request.data['phone_number']
         employee.save()
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
+    
 
     def destroy(self, request, pk=None):
         """Handle DELETE requests for a single employee
@@ -91,8 +100,8 @@ class EmployeeView(ViewSet):
         Returns:
             Response -- 200, 404, or 500 status code
         """
-        if not request.auth.user.is_staff:
-            return Response({}, status=status.HTTP_403_FORBIDDEN)
+        # if not request.auth.user.is_staff:
+        #     return Response({}, status=status.HTTP_403_FORBIDDEN)
 
         try:
             employee = Employee.objects.get(pk=pk)
