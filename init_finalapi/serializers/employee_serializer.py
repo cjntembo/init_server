@@ -17,6 +17,6 @@ class EmployeeSerializer(serializers.ModelSerializer):
             'state',
             'postal_code',
             'country',
-            'phone_number'
+            # 'phone_number'
             )
         depth = 1

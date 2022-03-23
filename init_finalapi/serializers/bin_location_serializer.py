@@ -12,4 +12,4 @@ class BinLocationSerializer(serializers.ModelSerializer):
             'bin_location_name',
             'binned_by'
             )
-        depth = 1
+        depth = 2

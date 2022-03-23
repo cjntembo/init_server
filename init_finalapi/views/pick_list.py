@@ -27,7 +27,7 @@ class PickListView(ViewSet):
 
     @permission_classes([AllowAny])
     def list(self, request):
-        """Gets all BinLocations"""
+        """Gets all Pick Lists"""
 
         pick_list = PickList.objects.all()
 
@@ -47,12 +47,12 @@ class PickListView(ViewSet):
         pick_list = PickList()
         customer = Customer.objects.get(pk=request.data['customerId'])
         pick_list.customer = customer
-        
+
         picked_by = Employee.objects.get(pk=request.data['employeeId'])
         pick_list.picked_by = picked_by
-        
+
         pick_list.pick_list_date = request.data['pick_list_date']
-        
+
         pick_list_line = PickListLine.objects.get(pk=request.data['pick_list_lineId'])
         pick_list.pick_list_line = pick_list_line
 

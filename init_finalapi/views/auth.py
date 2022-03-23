@@ -55,7 +55,7 @@ def register_user(request):
         password=request.data['password'],
         first_name=request.data['first_name'],
         last_name=request.data['last_name'],
-        is_manager = request.data['is_manager'],
+        # is_manager = request.data['is_manager'],
     )
 
     # Now save the extra info in the init_finalapi_employee table

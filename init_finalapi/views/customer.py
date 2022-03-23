@@ -50,7 +50,7 @@ class CustomerView(ViewSet):
         customer.state = request.data['state']
         customer.postal_code = request.data['postal_code']
         customer.country = request.data['country']
-        customer.phone_number = request.data['phone_number']
+        # customer.phone_number = request.data['phone_number']
         # employee = Employee.objects.get(pk=['employeeId'])
         # customer.employee = employee
 
@@ -82,7 +82,7 @@ class CustomerView(ViewSet):
         customer.state = request.data['state']
         customer.postal_code = request.data['postal_code']
         customer.country = request.data['country']
-        customer.phone_number = request.data['phone_number']
+        # customer.phone_number = request.data['phone_number']
         customer.save()
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
