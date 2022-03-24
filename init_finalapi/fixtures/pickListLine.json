@@ -22,7 +22,7 @@
         "pk": 3,
         "fields": {
             "pick_list": 3,
-            "inventory": 3,
+            "inventory": 2,
             "qty_requested": 1
         }
     },
@@ -31,7 +31,7 @@
         "pk": 4,
         "fields": {
             "pick_list": 4,
-            "inventory": 3,
+            "inventory": 4,
             "qty_requested": 1
         }
     },
@@ -40,7 +40,7 @@
         "pk": 5,
         "fields": {
             "pick_list": 5,
-            "inventory": 3,
+            "inventory": 1,
             "qty_requested": 1
         }
     },
@@ -49,8 +49,8 @@
         "pk": 6,
         "fields": {
             "pick_list": 6,
-            "inventory": 3,
-            "qty_requested": 1
+            "inventory": 2,
+            "qty_requested": 2
         }
     },
     {
@@ -59,6 +59,33 @@
         "fields": {
             "pick_list": 1,
             "inventory": 3,
+            "qty_requested": 1
+        }
+    },
+    {
+        "model": "init_finalapi.pickListLine",
+        "pk": 8,
+        "fields": {
+            "pick_list": 2,
+            "inventory": 5,
+            "qty_requested": 4
+        }
+    },
+    {
+        "model": "init_finalapi.pickListLine",
+        "pk": 9,
+        "fields": {
+            "pick_list": 3,
+            "inventory": 3,
+            "qty_requested": 2
+        }
+    },
+    {
+        "model": "init_finalapi.pickListLine",
+        "pk": 10,
+        "fields": {
+            "pick_list": 6,
+            "inventory": 5,
             "qty_requested": 1
         }
     }

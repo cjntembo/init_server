@@ -45,7 +45,7 @@
     },
     {
         "model": "init_finalapi.inventory",
-        "pk": 4,
+        "pk": 5,
         "fields":{
             "description":"Candle Wicks", 
             "unit_price":"1.75",
